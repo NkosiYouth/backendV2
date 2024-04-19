@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-file_bp = Blueprint('file', _name_)
+file_bp = Blueprint('file', __name__)
 
 @file_bp.route('/upload', methods=['POST'])
 def upload_file():
