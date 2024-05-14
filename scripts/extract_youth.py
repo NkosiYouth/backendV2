@@ -12,9 +12,10 @@ def extract_youth():
     # Run the Python script with the selected cohort and export type
     try:
         result = subprocess.run(
-            ["python", "scripts\extract_youth.py"],  # Replace with the actual path to your script
-            input=f"{cohort}\n{export_type}\n", 
-            text=True, capture_output=True
+            ["python", "scripts\extract_youth.py", cohort, export_type],
+            text=True, 
+            capture_output=True,
+            check=True 
         )
         
         # Handle result.stdout (e.g., send file download link)
