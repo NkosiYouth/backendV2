@@ -1,9 +1,6 @@
 from flask import Flask, request, jsonify
 import subprocess  # For running the Python script
 
-app = Flask(__name__)
-
-@app.route('/api/extract-youth', methods=['POST'])
 def extract_youth():
     data = request.get_json()
     cohort = data.get('cohort')
@@ -24,6 +21,3 @@ def extract_youth():
         return jsonify({"message": "Data extraction successful"}), 200
     except subprocess.CalledProcessError as e:
         return jsonify({"error": f"Error extracting data: {e.stderr}"}), 500
-
-if __name__ == '__main__':
-    app.run()
