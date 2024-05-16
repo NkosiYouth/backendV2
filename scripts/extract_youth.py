@@ -5,7 +5,7 @@ import subprocess
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/script/extract-youth', methods=['POST'])
+@app.route('/scripts/extract_youth', methods=['POST'])
 def extract_youth():
     data = request.get_json()
     cohort = data.get('cohort')
@@ -14,7 +14,7 @@ def extract_youth():
     # Run the Python script with the selected cohort and export type
     try:
         result = subprocess.run(
-            ["python", "scripts/extract_youth.py"],  # Use correct path separator for the OS
+            ["python", "/scripts/extract_youth"],  # Use correct path separator for the OS
             input=f"{cohort}\n{export_type}\n", 
             text=True, capture_output=True, check=True
         )
