@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import CORS
-import subprocess  # For running the Python script
+from flask_cors import CORS
+import subprocess
 
 app = Flask(__name__)
-CORS(app)  # Apply CORS to your Flask app
+CORS(app)
 
 @app.route('/script/extract-youth', methods=['POST'])
 def extract_youth():
@@ -14,17 +14,18 @@ def extract_youth():
     # Run the Python script with the selected cohort and export type
     try:
         result = subprocess.run(
-            ["python", "scripts\extract_youth.py"],  # Replace with the actual path to your script
+            ["python", "scripts/extract_youth.py"],  # Use correct path separator for the OS
             input=f"{cohort}\n{export_type}\n", 
-            text=True, capture_output=True
+            text=True, capture_output=True, check=True
         )
         
         # Handle result.stdout (e.g., send file download link)
-        # ...
+        # Here assuming your script prints a download link or success message
+        output = result.stdout.strip()
         
-        return jsonify({"message": "Data extraction successful"}), 200
+        return jsonify({"message": "Data extraction successful", "output": output}), 200
     except subprocess.CalledProcessError as e:
         return jsonify({"error": f"Error extracting data: {e.stderr}"}), 500
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
