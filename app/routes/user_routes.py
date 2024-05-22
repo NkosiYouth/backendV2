@@ -12,7 +12,7 @@ def create_user():
 
 # Existing route to update user by id
 @user_bp.route('/users/verify/<user_id>', methods=['PUT'])
-def update_user(user_id):
+def verify_user(user_id):
     data = request.json
     data['isValidated'] = True
     print(data)
