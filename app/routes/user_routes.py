@@ -25,6 +25,18 @@ def update_user(user_id):
     else:
         return jsonify({"message": "User not found"}), 404
 
+# Existing route to update user by id
+@user_bp.route('/users/<user_id>', methods=['PUT'])
+def update_user(user_id):
+    data = request.json
+    print(data)
+    print(user_id)
+    result = User.update_user(user_id, data)
+    if result:
+        return jsonify({"message": "User updated successfully"}), 200
+    else:
+        return jsonify({"message": "User not found"}), 404
+
 # Existing route to get all users
 @user_bp.route('/users', methods=['GET'])
 def get_all_users():
