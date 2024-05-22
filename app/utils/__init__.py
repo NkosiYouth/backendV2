@@ -1,6 +1,6 @@
 import os
 
-from ...scripts.sharepoint import upload_file_to_sharepoint, upload_folder_to_sharepoint, create_folder_in_sharepoint, get_access_token
+from ..scripts.sharepoint import upload_file_to_sharepoint, upload_folder_to_sharepoint, create_folder_in_sharepoint, get_access_token
 from ...scripts.delete_folder import delete_file_or_folder
 
 def upload_to_share_porint(pdf_folder_path, cohort):
