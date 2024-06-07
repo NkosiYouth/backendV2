@@ -149,10 +149,10 @@ def ai_model(file_path, file_name, cohort):
     """
 
     # Replace 'Your_HuggingFace_Token' with your actual Hugging Face token
-    hf_token = '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'
+    hf_token = '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'
 
     # Initialize the Gradio client with your Hugging Face token
-    client = Client("https://nkosiyouth-ocr-image-to-text.hf.space/--replicas/sszfq/", hf_token=hf_token)
+    client = Client("https://nkosiyouth-ocr-image-to-text.hf.space/--replicas/kpg03/", hf_token=hf_token)
 
     results_list = []
 
